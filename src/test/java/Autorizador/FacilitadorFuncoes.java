@@ -1,7 +1,6 @@
 package Autorizador;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,26 +34,33 @@ public class FacilitadorFuncoes extends DriverPage{
     }
     public void AtendimentoAoCliente(){
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
-        driver.switchTo().frame("contentFrame");
+        metodoSwitchFrame("contentFrame");
         getElementXpath("//li[2][text()='Atendimento ao Cliente']").click();
-        driver.switchTo().defaultContent();
 
-        //Acessar o campo Card Number
-        driver.manage().timeouts().implicitlyWait(8,TimeUnit.SECONDS);
+        //Acessar o campo Card Number;
+        driver.switchTo().defaultContent();
+        metodoSwitchFrame("contentFrame");
+        metodoSwitchFrame("applicationFrame");
+        //driver.manage().timeouts().implicitlyWait(8,TimeUnit.SECONDS);
         driver.switchTo().frame("CardLeftPage");
-        getElementXpath("//body[@class='left-frame']//div[@class='search-box']//div[@id='ctlSearch_update']//span[@id='ctlSearch_txtfind_dropWrapper']//input[@id='ctlSearch_txtfind']").click();
+        getElementXpath("//input[@id='ctlSearch_txtfind']").click();
+        getElementXpath("//input[@id='ctlSearch_txtfind']").sendKeys("666");
+        getElementXpath("//input[@id='ctlSearch_txtfind']").clear();
     }
     public void realizarLogOff(){
+        metodoSwitchFrame("bannerFrame");
         getElementXpath("//a[@id='aLogOff']").click();
-        getElementXpath("//*[contains(text(),'Log Off')]");
-        //driver.switchTo().defaultContent();
+    }
+    public void metodoSwitchFrame(String frame){
+        driver.switchTo().frame(frame);
     }
     public void alteracaoIdioma(){
-        driver.switchTo().frame("bannerFrame");
+        metodoSwitchFrame("bannerFrame");
         getElementXpath("//select[@name='ddlLanguage']").click();
         getElementXpath("//option[@value='pt-BR']").click();
 
     }
+
 
 
 }
