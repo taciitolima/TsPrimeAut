@@ -8,7 +8,6 @@ public class ConsultaCreditoRotativo {
 
     FacilitadorFuncoes facilit = new FacilitadorFuncoes();
 
-
     @Before
     public void setUp(){
         facilit.getChrome("https://10.113.3.24/PRIME4/TSPrimeRoot/Default.aspx");
@@ -19,8 +18,8 @@ public class ConsultaCreditoRotativo {
     public void testConsultaCreditoRotativo(){
         facilit.AtendimentoAoCliente();
     }
-    /*@After
-    public void LogOff(){
+    @After
+    public void tearDown(){
         facilit.realizarLogOff();
-    }*/
+    }
 }
