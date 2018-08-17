@@ -13,6 +13,7 @@ public class DriverPage{
         driver = new ChromeDriver();
         driver.manage().window().maximize(); //Maximizar Browser
         getUrl(url); // Navegação para a url solicitada
+
     }
     // Método para inserir url
     public void getUrl(String url){

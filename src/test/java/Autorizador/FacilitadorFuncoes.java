@@ -23,14 +23,15 @@ public class FacilitadorFuncoes extends DriverPage{
         getElement("ctl00_MainPlaceHolder_txtPassword").sendKeys(senha);
         getElement("ctl00_MainPlaceHolder_btnLogon").click();
 
-        // Condição caso apareça a mensagem "Session Alredy Active"
+        // Condição caso apareça a mensagem "Session Already Active"
         if (getElementXpath("//div[@id='maincontent']").isDisplayed()) {
             getElement("ctl00_MainPlaceHolder_btnTerminateSession").click();
-            getElement("ctl00_MainPlaceHolder_btnGo").click();
-        } else {
+          getElement("ctl00_MainPlaceHolder_btnGo").click();}
+       //} else {
             // Continua o processo de login no Botão "Continue"
-            getElement("ctl00_MainPlaceHolder_btnGo]").click();
-        }
+            //getElement("ctl00_MainPlaceHolder_btnGo]").click();
+       // }
+
     }
     public void AtendimentoAoCliente(){
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
